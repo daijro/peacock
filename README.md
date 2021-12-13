@@ -5,7 +5,9 @@ full-color representation to simulate what a colorblind person might see.
 
 **The objective of this tool is to give colorblind graphic designers the ability to translate "normally" colored RGB values back to their own scale of color perception, so that they can include colors in their work universally seen between them and their non-colorblind audience.**
 
+
 [Coblis—Color Blindness Simulator](http://www.color-blindness.com/coblis-color-blindness-simulator/), [Peacock](https://github.com/jkulesza/peacock) and other such similar utilities are available, however they only offer full image conversion and not single colors. RGB2Colorblind is a fork of Peacock that was written to provide an offline mechanism for quering specific RGB/Hex values and translating them to various types of colorblindness.
+
 
 The types of colorblindness that can be simulated are (with prevalence
 information from [here](http://www.webexhibits.org/causesofcolor/2C.html) as
@@ -26,11 +28,15 @@ cited on
 |     Monochromacy (total color blindness)       |          rare          |           rare           |
 
 
+<hr width=70>
+
 # Installation
 Install the required packages using the `requirements.txt` file:
 ```
 > pip install -r requirements.txt
 ```
+
+<hr width=70>
 
 # Usage
 
@@ -54,17 +60,22 @@ Network [http://www.hcirn.com/] for non-commercial purposes.  As such, this
 code may only be used for non-commercial purposes.
 
 
+![demo](https://i.imgur.com/rvvGXEa.gif)
+
+
 Typical command line calls might look like:
 
 **Converting RGB**
-```
+```ps
 > python rgb2colorblind.py <r> <g> <b> --type <type>
 ```
 **Converting Hex**
+```ps
+> python rgb2colorblind.py <hex> --type <type>
 ```
-> python rgb2colorblind.py <hex>       --type <type>
-```
+**specifying type is optional, but set to All by default*
 
+<hr width=70>
 
 # License Information<a name="LicneseInformation"></a>
 
@@ -73,13 +84,3 @@ The conversion processes and coefficients herein are used with permission from
 permission of Matthew Wickline and the [Human-Computer Interaction Resource
 Network](http://www.hcirn.com/) for non-commercial purposes.  As such, this code
 may only be used for non-commercial purposes.
-
-[Original (Normal)
-image](https://commons.wikimedia.org/wiki/File:Crayola_24pack_2005.jpg) above
-obtained at the linked URL and is used under the Creative Commons
-Attribution-Share Alike 3.0 Unported license.
-
-Peacock++ uses the `args.hxx` header-only C++ command line option parser for
-command line argument processing from [here](https://github.com/Taywee/args).
-This file is used under the MIT license (see top of `args.hpp`).   More
-information in [Peacock++'s README](cpp/README.md#OSSCredits).
