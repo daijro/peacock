@@ -6,7 +6,7 @@ full-color representation to simulate what a colorblind person might see.
 **The objective of this tool is to give colorblind graphic designers the ability to translate "normally" colored RGB values back to their own scale of color perception, so that they can include colors in their work universally seen between them and their non-colorblind audience.**
 
 
-[Coblis—Color Blindness Simulator](http://www.color-blindness.com/coblis-color-blindness-simulator/), [Peacock](https://github.com/jkulesza/peacock) and other such similar utilities are available, however they only offer full image conversion and not single colors. RGB2Colorblind is a fork of Peacock that was written to provide an offline mechanism for quering specific RGB/Hex values and translating them to various types of colorblindness.
+[Coblis—Color Blindness Simulator](http://www.color-blindness.com/coblis-color-blindness-simulator/) and other such similar utilities are available, however they only offer full image conversion and not single colors. RGB2Colorblind is a fork of [Peacock](https://github.com/jkulesza/peacock) that was written to provide an offline mechanism for quering specific RGB/Hex values and translating them to various types of colorblindness.
 
 
 The types of colorblindness that can be simulated are (with prevalence
@@ -36,6 +36,8 @@ Install the required packages using the `requirements.txt` file:
 > pip install -r requirements.txt
 ```
 
+(python 3.8+ required)
+
 <hr width=70>
 
 # Usage
@@ -53,12 +55,8 @@ This script is used to convert "normally" colored RGB/Hex values to colorblind R
 
 with the default action to convert to 'All' types of colorblindness (and to a normal vision version).  Converting to only a select type of colorblindness can be accomplished with the CB parameter described below.
 
-The conversion processes and coefficients herein are used with permission
-from Colblindor [http://www.color-blindness.com/] and were therein used with
-permission of Matthew Wickline and the Human-Computer Interaction Resource
-Network [http://www.hcirn.com/] for non-commercial purposes.  As such, this
-code may only be used for non-commercial purposes.
 
+<hr width=70>
 
 ![demo](https://i.imgur.com/rvvGXEa.gif)
 
@@ -66,14 +64,14 @@ code may only be used for non-commercial purposes.
 Typical command line calls might look like:
 
 **Converting RGB**
-```ps
+```xml
 > python rgb2colorblind.py <r> <g> <b> --type <type>
 ```
 **Converting Hex**
-```ps
+```xml
 > python rgb2colorblind.py <hex> --type <type>
 ```
-**specifying type is optional, but set to All by default*
+**specifying type is optional; set to All by default*
 
 <hr width=70>
 
