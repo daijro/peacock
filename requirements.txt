@@ -1,0 +1,2 @@
+webcolors==1.10
+texttable==1.6.4

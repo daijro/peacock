@@ -1,22 +1,11 @@
-# Peacock, what is it?
+# RGB2Colorblind
 
-Peacock is an application to convert static images (PNG, JPEG, etc.) from a
-full-color representation to something attempting to simulate what a colorblind
-person might see.
+RGB2Colorblind is an application to convert RGB/Hex values from a
+full-color representation to simulate what a colorblind person might see.
 
-**The objective of Peacock is to increase the accessibility of digital graphics
-and was originally created to verify that scientific visualizations were not
-ambiguous and/or misleading to colorblind viewers.**
+**The objective of this tool is to give colorblind graphic designers the ability to translate "normally" colored RGB values back to their own scale of color perception, so that they can include colors in their work universally seen between them and their non-colorblind audience.**
 
-[Coblis—Color Blindness
-Simulator](http://www.color-blindness.com/coblis-color-blindness-simulator/) and
-other such similar utilities are available online; however, sometimes online
-resources are inconvenient or inaccessible.  Adobe Photoshop and other offline
-resources provide colorblindness simulation; however, all offline tools that
-could be located were cumbersome when processing multiple images for multiple
-forms of colorblindness.  So, Peacock was written to provide an offline
-mechanism to simulate color blindness capable of being used with batch
-processing.
+[Coblis—Color Blindness Simulator](http://www.color-blindness.com/coblis-color-blindness-simulator/), [Peacock](https://github.com/jkulesza/peacock) and other such similar utilities are available, however they only offer full image conversion and not single colors. RGB2Colorblind is a fork of Peacock that was written to provide an offline mechanism for quering specific RGB/Hex values and translating them to various types of colorblindness.
 
 The types of colorblindness that can be simulated are (with prevalence
 information from [here](http://www.webexhibits.org/causesofcolor/2C.html) as
@@ -36,37 +25,46 @@ cited on
 |                 **Other**                      |                        |                          |
 |     Monochromacy (total color blindness)       |          rare          |           rare           |
 
-Despite being quite rare, simulating monochromacy was included because it can also
-be used to evaluate the suitability of an image to display well when printed 
-without color.
 
-# Why are there Python and C++ verions?
+# Installation
+Install the required packages using the `requirements.txt` file:
+```
+> pip install -r requirements.txt
+```
 
-The Python version (Peacock as `peacock.py`) came first as a proof of concept.
-It was built using the conversion coefficients and process from
-[Coblis](http://www.color-blindness.com/coblis-color-blindness-simulator/) (with
-permission; see [License Information](#LicenseInformation) for more
-information).
+# Usage
 
-More details on the Python version are available in its [README
-file](python/README.md).
+This script is used to convert "normally" colored RGB/Hex values to colorblind RGB/Hex values.
 
-However, the Python version is relatively slow.  So, the C++ version was created
-(Peacock++ as `peacock`).  More details on the C++ version are available in its
-[README file](cpp/README.md).  The Python version is kept because (a) some users
-might find it more accessible and (b) the C++ version depends on ImageMagick
-(Magick++), which some users may not have easy access to.
+* Normal (normal vision)
+* Protanopia (red-blind)
+* Deuteranopia (green-blind)
+* Tritanopia (blue-blind)
+* Protanomaly (red-weak)
+* Deuteranomaly (green-weak)
+* Tritanomaly (blue-weak)
+* Monochromacy (totally colorblind)
 
-Converting the ["Normal"
-image](https://commons.wikimedia.org/wiki/File:Crayola_24pack_2005.jpg)
-(original resolution 1600x1200) below to simulate the seven available forms of
-colorblindness takes approximately 4.5 minutes with Python and approximately 5
-seconds with C++ (the C++ is roughly a factor of 50 faster than Python).
+with the default action to convert to 'All' types of colorblindness (and to a normal vision version).  Converting to only a select type of colorblindness can be accomplished with the CB parameter described below.
 
-![Montage of Output](readme_files/CB_Montage_Crayons.jpg)
+The conversion processes and coefficients herein are used with permission
+from Colblindor [http://www.color-blindness.com/] and were therein used with
+permission of Matthew Wickline and the Human-Computer Interaction Resource
+Network [http://www.hcirn.com/] for non-commercial purposes.  As such, this
+code may only be used for non-commercial purposes.
 
-The shell script used to create the montage above is available
-[here](readme_files/montage.sh).
+
+Typical command line calls might look like:
+
+**Converting RGB**
+```
+> python rgb2colorblind.py <r> <g> <b> --type <type>
+```
+**Converting Hex**
+```
+> python rgb2colorblind.py <hex>       --type <type>
+```
+
 
 # License Information<a name="LicneseInformation"></a>
 
