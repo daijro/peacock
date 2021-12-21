@@ -9,9 +9,18 @@ from texttable import Texttable
 
 class ColorBlindConverter(object):
     def __init__(self):
-        self.Normal, self.Protanopia, self.Deuteranopia, self.Tritanopia, self.Protanomaly, self.Deuteranomaly, self.Tritanomaly, self.Monochromacy = range(8)
+        (
+            self.Normal,
+            self.Protanopia,
+            self.Deuteranopia,
+            self.Tritanopia,
+            self.Protanomaly,
+            self.Deuteranomaly,
+            self.Tritanomaly,
+            self.Monochromacy
+        )   = range(8)
 
-        self.powGammaLookup = np.power(np.linspace(0,256,256)/256, 2.2)
+        self.powGammaLookup = np.power(np.linspace(0, 256, 256) / 256, 2.2)
         self.conversion_coeffs = [
             {'cpu': 0.753, 'cpv':  0.265, 'am': 1.273463, 'ayi': -0.073894},
             {'cpu': 1.140, 'cpv': -0.140, 'am': 0.968437, 'ayi':  0.003331},
@@ -23,7 +32,7 @@ class ColorBlindConverter(object):
     def convert(self, rgb, cb_type):
         self.rgb = rgb
         self.cb_type = cb_type
-        # print('Converting to vision type: {:}.'.format(self.cb_type))
+        
         if self.cb_type == 0:
             self.converted_rgb = self._convert_normal()
         elif self.cb_type in range(1, 4):
@@ -37,8 +46,8 @@ class ColorBlindConverter(object):
     def _convert_normal(self):
         return self.rgb
 
-    def _convert_colorblind(self):  # sourcery no-metrics
-        # gamma = 2.2;
+    def _convert_colorblind(self):
+        
         wx = 0.312713;
         wy = 0.329016;
         wz = 0.358271;
